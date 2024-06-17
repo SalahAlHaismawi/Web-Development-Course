@@ -26,3 +26,8 @@ label, input {
     display: block;
     margin: 10px 0;
 }
+
+#confirm_password:disabled {
+    background-color: #D3D3D3;
+}
+
