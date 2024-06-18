@@ -1,3 +1,12 @@
+//https://stackoverflow.com/questions/75988682/debounce-in-javascript
+function debounce(func, delay) {
+    let debounceTimer;
+    return function(...args) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(this, args), delay);
+    }
+}
+
 function checkUsername() {
     let username = document.getElementById('username').value.trim();
     if(username != ''){
@@ -12,6 +21,23 @@ function checkUsername() {
         .then(data => document.getElementById('username-result').innerHTML = data);
     } else {
         document.getElementById('username-result').innerHTML = "";
+    }
+}
+
+function checkEmail() {
+    let email = document.getElementById('email').value.trim();
+    if(email != ''){
+        fetch('check_email.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'email=' + email
+        })
+        .then(response => response.text())
+        .then(data => document.getElementById('email-result').innerHTML = data);
+    } else {
+        document.getElementById('email-result').innerHTML = "";
     }
 }
 

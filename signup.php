@@ -13,18 +13,18 @@ include ('includes/header.php');
     <h2>Sign Up</h2>
     <form action="add_user.php" method="post">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+        <input type="email" id="email" name="email" oninput="" required>
+        <span id="email-result"></span><br>
 
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" maxlength="20" onblur="checkUsername()" required>
+        <input type="text" id="username" name="username" maxlength="20" oninput="debounce(checkUsername, 1000)(event)" required>
         <span id="username-result"></span><br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" oninput="handlePasswordInput()" required><br>
+        <input type="password" id="password" name="password" oninput="debounce(handlePasswordInput, 100)(event)" required><br>
 
         <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" oninput="handlePasswordInput()" disabled
-            required>
+        <input type="password" id="confirm_password" name="confirm_password" oninput="debounce(handlePasswordInput, 100)(event)" disabled required>
         <span id="password-confirmation-result"></span><br>
 
         <label for="role">Role:</label>
