@@ -1,4 +1,14 @@
 //https://stackoverflow.com/questions/75988682/debounce-in-javascript
+function init(){
+    window.onload = () =>{
+        checkEmail()
+        checkUsername()
+        handlePasswordInput()
+    }
+}
+
+init()
+
 function debounce(func, delay) {
     let debounceTimer;
     return function(...args) {
@@ -76,3 +86,22 @@ function checkPasswordConfirmation(password) {
     }
 }
 
+function validateForm() {
+    let username = document.getElementById('username').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let password = document.getElementById('password').value;
+    let confirmPassword = document.getElementById('confirm_password').value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return false;
+    }
+
+    let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return false;
+    }
+
+    return true;
+}
