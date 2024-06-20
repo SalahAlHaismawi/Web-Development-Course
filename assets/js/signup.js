@@ -86,11 +86,11 @@ function checkPasswordConfirmation(password) {
     }
 }
 
-async function validateForm() {
-    let username = document.getElementById('username').value.trim();
+function validateForm() {
     let email = document.getElementById('email').value.trim();
     let password = document.getElementById('password').value;
     let confirmPassword = document.getElementById('confirm_password').value;
+    let role = document.getElementById('role').value;
 
     if (password !== confirmPassword) {
         alert('Passwords do not match');
@@ -103,11 +103,20 @@ async function validateForm() {
         return false;
     }
 
-    // Check if email is in use
-    await checkEmail();
     let emailResult = document.getElementById('email-result').innerHTML;
-    if (emailResult.includes('Email is already in used')) {
+    if (emailResult.includes('Email is already in use')) {
         alert('Email is already in use');
+        return false;
+    }
+
+    let usernameResult = document.getElementById('username-result').innerHTML;
+    if (usernameResult.includes('Username is already in use')) {
+        alert('Username is already in use');
+        return false;
+    }
+
+    if (role === '') {
+        alert('Please select a role');
         return false;
     }
 

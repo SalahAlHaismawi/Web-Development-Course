@@ -8,7 +8,7 @@ if(isset($_POST['username'])){
     $result = mysqli_query($conn, $query);
 
     if(mysqli_num_rows($result) > 0){
-        echo "<span style='color:red;'>Username already exists.</span>";
+        echo "<span style='color:red;'>Username is already in use.</span>";
     }else{
         echo "<span style='color:green;'>Username available.</span>";
     }
