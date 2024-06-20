@@ -86,7 +86,7 @@ function checkPasswordConfirmation(password) {
     }
 }
 
-function validateForm() {
+async function validateForm() {
     let username = document.getElementById('username').value.trim();
     let email = document.getElementById('email').value.trim();
     let password = document.getElementById('password').value;
@@ -100,6 +100,14 @@ function validateForm() {
     let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
         alert('Please enter a valid email address');
+        return false;
+    }
+
+    // Check if email is in use
+    await checkEmail();
+    let emailResult = document.getElementById('email-result').innerHTML;
+    if (emailResult.includes('Email is already in used')) {
+        alert('Email is already in use');
         return false;
     }
 
