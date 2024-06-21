@@ -6,10 +6,10 @@ $message = process_signin();
 <div class="container">
     <h2>Sign In</h2>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required><br><br>
 
         <p id="message" style="color: red;">
             <?php
