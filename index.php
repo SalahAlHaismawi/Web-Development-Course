@@ -5,6 +5,11 @@ include ('includes/header.php');
     <div class="container2">
         <h1>Welcome to MMU Counseling Services</h1>
         <strong>Your one-stop solution for booking counseling sessions.</strong>
+        <div class="button-container">
+            <a href="signup.php"><button>Sign Up</button></a>
+            <p>or</p>
+            <a href="signin.php"><button>Sign In</button></a>
+        </div>
     </div>
 </div>
 <?php
@@ -25,14 +30,38 @@ include ('includes/footer.php');
     }
 
     .container2 {
-    background-color: white;
-    text-align: center;
-    border-radius: 30px;
-    padding: 30px;
-    color: #333;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
+        background-color: white;
+        text-align: center;
+        border-radius: 30px;
+        padding: 30px;
+        color: #333;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 20px 20px 10px 20px;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-container button:hover {
+        background-color: #003f8a;
+    }
 
     h1 {
         color: #0056b3;
