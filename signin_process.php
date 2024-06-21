@@ -1,32 +1,38 @@
 <?php
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    header('Location: index.php');
+    exit;
+}
 
-require_once('db_config.php');
-$conn = OpenConnection();
+function process_signin() {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['email']) || !isset($_POST['password'])) {
+        return;
+    }
 
-// if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-//     header('Location: index.php');
-//     exit;
-// }
+    session_start();
+    require_once('db_config.php');
+    $conn = OpenConnection();
 
-if(isset($_POST['email']) && isset($_POST['password'])){
-    $email = mysqli_escape_string( $conn, $_POST['email'] );
-    $password = mysqli_escape_string( $conn, $_POST['password'] );
-
+    $email = mysqli_escape_string($conn, $_POST['email']);
+    $password = mysqli_escape_string($conn, $_POST['password']);
     $query = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
-
     if(mysqli_num_rows($result) > 0){
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['password'])) {
-            echo "<span style='color:green;'>Sign in successful.</span>";
+            $_SESSION['role'] = $user['role'];
+            if($user['role'] == 'admin'){
+                header('Location: admin_page.php');
+                exit;
+            } else {
+                header('Location: user_page.php');
+                exit;
+            }
         } else {
-            echo "<span style='color:red;'>Invalid email or password.</span>";
-            
+            return "Invalid email or password.";
         }
     } else {
-        echo "<span style='color:red;'>Invalid email or password.</span>";
+        return "Invalid email or password.";
     }
-} else{
-    echo "Error: Email and password are required.";
 }
 ?>
