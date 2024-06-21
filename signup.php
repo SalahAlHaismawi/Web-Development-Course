@@ -1,4 +1,5 @@
 <?php
+require_once("redirection_cookies.php");
 require_once ('includes/header.php');
 ?>
 <div class="container">

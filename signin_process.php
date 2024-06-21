@@ -1,9 +1,4 @@
 <?php
-if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
-    header('Location: index.php');
-    exit;
-}
-
 function process_signin() {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['email']) || !isset($_POST['password'])) {
         return;
@@ -21,11 +16,18 @@ function process_signin() {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['password'])) {
             $_SESSION['role'] = $user['role'];
+            if(isset($_POST['rememberme'])) {
+                //cookies set for 7 days before expiring
+                setcookie('role', $user['role'], time() + (86400 * 7), "/");
+            }
             if($user['role'] == 'admin'){
-                header('Location: admin_page.php');
+                header('Location: dashboard/admin_dashboard.php');
                 exit;
-            } else {
-                header('Location: user_page.php');
+            } elseif($user['role'] == 'counselor') {
+                header('Location: dashboard/counselor_dashboard.php');
+                exit;
+            } elseif($user['role'] == 'student') {
+                header('Location: dashboard/student_dashboard.php');
                 exit;
             }
         } else {
@@ -35,4 +37,3 @@ function process_signin() {
         return "Invalid email or password.";
     }
 }
-?>

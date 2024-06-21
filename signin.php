@@ -1,4 +1,5 @@
 <?php
+require_once("redirection_cookies.php");
 require_once ('includes/header.php');
 require_once ('signin_process.php');
 $message = process_signin();
@@ -10,6 +11,8 @@ $message = process_signin();
         <input type="email" id="email" name="email" required><br><br>
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required><br><br>
+        <label for="rememberme">Stay logged in?</label>
+        <input type="checkbox" name="rememberme" id="rememberme">
 
         <p id="message" style="color: red;">
             <?php
