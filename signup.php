@@ -1,6 +1,7 @@
 <?php
 require_once ('includes/header.php');
 ?>
+<div class="container">
 <h2>Sign Up</h2>
 <form action="add_user.php" method="post" onsubmit="return validateForm()">
     <label for="email">Email:</label>
@@ -30,6 +31,7 @@ require_once ('includes/header.php');
 
     <input type="submit" value="Sign Up">
 </form>
+</div>
 <script src="assets/js/signup.js"></script>
 <?php
 require_once ('includes/footer.php');

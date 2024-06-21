@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <h1>MMU Counseling Services</h1>
+        <h1 style="color: white; margin-top: 10px;">MMU Counseling Services</h1>
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>

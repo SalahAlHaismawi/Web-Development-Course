@@ -1,17 +1,10 @@
 <?php
-include('includes/header.php');
+include ('includes/header.php');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>MMU Counseling Services</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
-<body>
-    <h1>Welcome to MMU Counseling Services</h1>
-    <p>Your one-stop solution for booking counseling sessions.</p>
-</body>
-</html>
+<div class="container">
+<h1 style="color: #0056b3;">Welcome to MMU Counseling Services</h1>
+<p>Your one-stop solution for booking counseling sessions.</p>
+</div>
 <?php
-include('includes/footer.php');
+include ('includes/footer.php');
 ?>
