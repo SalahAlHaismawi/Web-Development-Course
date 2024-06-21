@@ -36,7 +36,7 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
             addUserIntoDatabase($conn, $username, $email, $password, $role);
         }
     }
-    header("Location: signupconfirmation.php");
+    header("Location: signup_confirmation.php");
     exit();
 } else {
     header("location: index.php");
@@ -60,7 +60,6 @@ function addUserIntoDatabase($conn, $username, $email, $password, $role)
 
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
-        // Redirect to login page
         $_SESSION['message'] = "<span style='color:green;'>Sign up successful. Now you may log in.</span>";
         $_SESSION['redirectUrl'] = "signin.php";
     } else {
