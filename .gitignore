@@ -1,2 +1,4 @@
 db_config.php
 .idea
+uploads/*
+database_and_services/db_config.php
