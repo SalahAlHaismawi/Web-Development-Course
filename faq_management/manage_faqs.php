@@ -42,4 +42,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 CloseConnection($conn);
 header('Location: ../dashboard/admin_dashboard.php');
 exit();
-?>
+
