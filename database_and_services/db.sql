@@ -48,5 +48,11 @@ CREATE TABLE reviews (
     FOREIGN KEY (session_id) REFERENCES counseling_sessions(session_id)
     -- Additional fields as needed
 );
+CREATE TABLE faqs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255) NOT NULL,
+    answer TEXT NOT NULL
+);
+
 
 INSERT INTO Admin (username, email, password, role) VALUES ('adminUser', 'admin@example.com', '$2y$10$htmWadLYCOwGlaMbXvZsbuvuZ5BN9V412..uTMF4wl0IwBHTtX4/u', 'administrator');
