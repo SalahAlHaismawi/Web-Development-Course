@@ -6,9 +6,9 @@ include ('includes/header.php');
         <h1>Welcome to MMU Counseling Services</h1>
         <strong>Your one-stop solution for booking counseling sessions.</strong>
         <div class="button-container">
-            <a href="signup.php"><button>Sign Up</button></a>
+            <a href="./authentication/signup.php"><button>Sign Up</button></a>
             <p>or</p>
-            <a href="signin.php"><button>Sign In</button></a>
+            <a href="authentication/signin.php"><button>Sign In</button></a>
         </div>
     </div>
 </div>

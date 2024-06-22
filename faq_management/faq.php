@@ -1,4 +1,4 @@
-<?php require_once("includes/header.php")?>
+<?php require_once("../includes/header.php") ?>
 <div class="container">
 <h1 class="h1-faq">Frequently Asked Questions (FAQs)</h1>
     <section class="faq">
@@ -22,5 +22,5 @@
         </div>
     </section>
 </div>
-<script src="assets/js/faq.js"></script>
-<?php require_once("includes/footer.php")?>
+<script src="../assets/js/faq.js"></script>
+<?php require_once("includes/footer.php") ?>

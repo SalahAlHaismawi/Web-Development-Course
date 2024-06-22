@@ -1,7 +1,7 @@
 <?php
-require_once("redirection_cookies.php");
-require_once ('includes/header.php');
-require_once ('signin_process.php');
+require_once("../database_and_services/redirection_cookies.php");
+require_once('../includes/header.php');
+require_once('signin_process.php');
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = process_signin();
@@ -30,4 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script>
 
 </script>
-<?php require_once ('includes/footer.php'); ?>
+<?php require_once('../includes/footer.php'); ?>

@@ -1,5 +1,5 @@
 <?php
-require_once('db_config.php');
+require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
 if (isset($_POST['username'])) {

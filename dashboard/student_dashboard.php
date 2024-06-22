@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../db_config.php');
+require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
 // Fetch counselors for the dropdown
@@ -39,7 +39,7 @@ $sessions_result = mysqli_query($conn, $sessions_query);
         <div class="main">
             <div class="section">
                 <h2>Create a New Counseling Session Request</h2>
-                <form action="../create_session.php" method="post">
+                <form action="../session_management/create_session.php" method="post">
                     <div class="form-group">
                         <label for="counselor">Choose a Counselor</label>
                         <select id="counselor" name="counselor_id" required>
@@ -62,7 +62,7 @@ $sessions_result = mysqli_query($conn, $sessions_query);
             </div>
             <div class="section">
                 <h2>Write a Review of Past Sessions</h2>
-                <form action="../submit_review.php" method="post">
+                <form action="../review_management/submit_review.php" method="post">
                     <div class="form-group">
                         <label for="session">Choose a Session</label>
                         <select id="session" name="session_id" required>

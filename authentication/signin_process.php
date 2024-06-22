@@ -5,7 +5,7 @@ function process_signin() {
     }
 
     session_start();
-    require_once('db_config.php');
+    require_once('../database_and_services/db_config.php');
     $conn = OpenConnection();
 
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -16,6 +16,7 @@ function process_signin() {
     $result = mysqli_query($conn, $query);
 
     if (!$result) {
+        error_log("Database query error: " . mysqli_error($conn));
         return "Error checking email: " . mysqli_error($conn);
     }
 
@@ -35,15 +36,16 @@ function process_signin() {
 
             switch ($user['role']) {
                 case 'administrator':
-                    header('Location: dashboard/admin_dashboard.php');
+                    header('Location: ../dashboard/admin_dashboard.php');
                     break;
                 case 'counselor':
-                    header('Location: dashboard/counselor_dashboard.php');
+                    header('Location: ../dashboard/counselor_dashboard.php');
                     break;
                 case 'student':
-                    header('Location: dashboard/student_dashboard.php');
+                    header('Location: ../dashboard/student_dashboard.php');
                     break;
                 default:
+                    error_log("Invalid user role for user: $email");
                     return "Invalid user role.";
             }
             exit();
@@ -57,3 +59,4 @@ function process_signin() {
     }
 }
 ?>
+

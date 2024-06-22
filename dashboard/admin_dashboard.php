@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../db_config.php');
+require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
 // Ensure user is logged in and is an admin
@@ -59,12 +59,12 @@ $faqs_result = mysqli_query($conn, $faqs_query);
                             <td><?php echo htmlspecialchars($row['email']); ?></td>
                             <td><?php echo htmlspecialchars($row['role']); ?></td>
                             <td>
-                                <form action="../manage_users.php" method="post" style="display:inline;">
+                                <form action="../user_management/manage_users.php" method="post" style="display:inline;">
                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
                                     <input type="hidden" name="action" value="edit">
                                     <button type="submit" class="btn">Edit</button>
                                 </form>
-                                <form action="../manage_users.php" method="post" style="display:inline;">
+                                <form action="../user_management/manage_users.php" method="post" style="display:inline;">
                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
                                     <input type="hidden" name="action" value="delete">
                                     <button type="submit" class="btn">Delete</button>
@@ -73,7 +73,7 @@ $faqs_result = mysqli_query($conn, $faqs_query);
                         </tr>
                     <?php endwhile; ?>
                 </table>
-                <form action="../manage_users.php" method="post">
+                <form action="../user_management/manage_users.php" method="post">
                     <h3>Add New User</h3>
                     <input type="hidden" name="action" value="add">
                     <div class="form-group">
@@ -115,12 +115,12 @@ $faqs_result = mysqli_query($conn, $faqs_query);
                             <td><?php echo htmlspecialchars($row['question']); ?></td>
                             <td><?php echo htmlspecialchars($row['answer']); ?></td>
                             <td>
-                                <form action="../manage_faqs.php" method="post" style="display:inline;">
+                                <form action="../faq_management/manage_faqs.php" method="post" style="display:inline;">
                                     <input type="hidden" name="faq_id" value="<?php echo $row['id']; ?>">
                                     <input type="hidden" name="action" value="edit">
                                     <button type="submit" class="btn">Edit</button>
                                 </form>
-                                <form action="../manage_faqs.php" method="post" style="display:inline;">
+                                <form action="../faq_management/manage_faqs.php" method="post" style="display:inline;">
                                     <input type="hidden" name="faq_id" value="<?php echo $row['id']; ?>">
                                     <input type="hidden" name="action" value="delete">
                                     <button type="submit" class="btn">Delete</button>
@@ -129,7 +129,7 @@ $faqs_result = mysqli_query($conn, $faqs_query);
                         </tr>
                     <?php endwhile; ?>
                 </table>
-                <form action="../manage_faqs.php" method="post">
+                <form action="../faq_management/manage_faqs.php" method="post">
                     <h3>Add New FAQ</h3>
                     <input type="hidden" name="action" value="add">
                     <div class="form-group">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../db_config.php');
+require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
 // Ensure user is logged in and is a counselor
@@ -65,7 +65,7 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
                                 <td><?php echo htmlspecialchars($row['date']); ?></td>
                                 <td><?php echo htmlspecialchars($row['time']); ?></td>
                                 <td>
-                                    <form action="../update_request_status.php" method="post">
+                                    <form action="../session_management/update_request_status.php" method="post">
                                         <input type="hidden" name="session_id" value="<?php echo htmlspecialchars($row['session_id']); ?>">
                                         <input type="hidden" name="status" value="accepted">
                                         <button type="submit" class="btn">Accept</button>
@@ -94,7 +94,7 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
                                 <td><?php echo htmlspecialchars($row['date']); ?></td>
                                 <td><?php echo htmlspecialchars($row['time']); ?></td>
                                 <td>
-                                    <form action="../update_request_status.php" method="post">
+                                    <form action="../session_management/update_request_status.php" method="post">
                                         <input type="hidden" name="session_id" value="<?php echo htmlspecialchars($row['session_id']); ?>">
                                         <input type="hidden" name="status" value="completed">
                                         <button type="submit" class="btn">Mark as Done</button>
