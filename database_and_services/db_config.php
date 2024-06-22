@@ -4,7 +4,7 @@ function OpenConnection() {
     $dbhost = "localhost";
     $dbuser = "root";
     $dbpass = "";
-    $dbname = "app";
+    $dbname = "counseling_app";
 
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

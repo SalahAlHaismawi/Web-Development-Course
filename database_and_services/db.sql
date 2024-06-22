@@ -63,3 +63,8 @@ CREATE TABLE faqs (
 
 
 INSERT INTO Admin (username, email, password, role) VALUES ('adminUser', 'admin@example.com', '$2y$10$htmWadLYCOwGlaMbXvZsbuvuZ5BN9V412..uTMF4wl0IwBHTtX4/u', 'administrator');
+INSERT INTO faqs (question, answer) VALUES 
+("What types of non-academic concerns do your counselors address?", "Our counselors can support you with a variety of concerns, including stress management, relationships, career exploration, and more."),
+("How do I book an appointment with a counselor?", "Booking is easy! You can schedule an appointment directly through our website or by calling us at 012-345 6789."),
+("What should I expect during my first counseling session?", "Your first session is primarily about understanding your needs and concerns. It's a safe space for you to share what's on your mind, and for us to provide guidance on how we can support you."),
+("Is confidentiality maintained during counseling sessions?", "Absolutely. We prioritize your privacy and confidentiality is of utmost importance to us.");
