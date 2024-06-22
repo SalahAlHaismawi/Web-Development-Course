@@ -22,7 +22,6 @@ include ('includes/footer.php');
         /* https://gsehd.gwu.edu/webinar-counselor-role */
         background-repeat: no-repeat;
         background-size: cover;
-        font-family: Arial, sans-serif;
     }
 
     .container {
