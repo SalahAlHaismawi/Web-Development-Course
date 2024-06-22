@@ -12,5 +12,4 @@ if (isset($_COOKIE['role'])) {
         exit;
     }
 }
-// rest of your index.php code
 ?>
