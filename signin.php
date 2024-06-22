@@ -2,7 +2,10 @@
 require_once("redirection_cookies.php");
 require_once ('includes/header.php');
 require_once ('signin_process.php');
-$message = process_signin();
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $message = process_signin();
+}
 ?>
 <div class="container">
     <h2>Sign In</h2>
