@@ -135,6 +135,66 @@ nav ul li a.active {
     text-decoration: none;
 }
 
+/* About us */
+.about-us {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-text-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.image-placeholder {
+    flex: 1;
+    background-color: #f4f4f4;
+    width: 50%;
+    size: 50%; /* Maintain aspect ratio (16:9) */
+    position: relative;
+}
+
+.image-placeholder::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+}
+
+.text-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text-content h2 {
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.how-we-do {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.how-we-do h2 {
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+
 /* FAQ */
 .faq {
     padding: 20px;
