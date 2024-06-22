@@ -12,11 +12,16 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'administrator') 
 // Fetch all users
 $users_query = "SELECT * FROM Students UNION SELECT * FROM Counselors UNION SELECT * FROM Admin";
 $users_result = mysqli_query($conn, $users_query);
+if (!$users_result) {
+    die("Error fetching users: " . mysqli_error($conn));
+}
 
 // Fetch FAQs
 $faqs_query = "SELECT * FROM faqs";
 $faqs_result = mysqli_query($conn, $faqs_query);
-
+if (!$faqs_result) {
+    die("Error fetching FAQs: " . mysqli_error($conn));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +35,7 @@ $faqs_result = mysqli_query($conn, $faqs_query);
     <div class="header">
         <div class="container">
             <h1>Admin Dashboard</h1>
+            <a href="../profile/admin_profile.php" class="btn-profile">Profile</a>
         </div>
     </div>
     <div class="container">

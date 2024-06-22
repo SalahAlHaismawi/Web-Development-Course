@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('db_config.php');
+require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,6 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 CloseConnection($conn);
-header('Location: dashboard/student_dashboard.php');
+header('Location: ../dashboard/student_dashboard.php');
 exit();
 ?>

@@ -11,6 +11,8 @@ CREATE TABLE Students (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL, 
     role ENUM('student') NOT NULL
+    profile_pic VARCHAR(255) NOT NULL
+
 );
 
 CREATE TABLE Admin (
@@ -19,6 +21,7 @@ CREATE TABLE Admin (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL, 
     role ENUM('administrator') NOT NULL
+    profile_pic VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Counselors (
@@ -27,6 +30,8 @@ CREATE TABLE Counselors (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL, 
     role ENUM('counselor') NOT NULL
+    profile_pic VARCHAR(255) NOT NULL
+
 );
 
 CREATE TABLE counseling_sessions (
@@ -53,6 +58,8 @@ CREATE TABLE faqs (
     question VARCHAR(255) NOT NULL,
     answer TEXT NOT NULL
 );
+
+
 
 
 INSERT INTO Admin (username, email, password, role) VALUES ('adminUser', 'admin@example.com', '$2y$10$htmWadLYCOwGlaMbXvZsbuvuZ5BN9V412..uTMF4wl0IwBHTtX4/u', 'administrator');
