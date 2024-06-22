@@ -19,6 +19,7 @@ include ('includes/footer.php');
 <style>
     body {
         background-image: url('https://gsehd.gwu.edu/sites/g/files/zaxdzs4166/files/2022-10/event-schoolcounseling.jpg');
+        /* https://gsehd.gwu.edu/webinar-counselor-role */
         background-repeat: no-repeat;
         background-size: cover;
         font-family: Arial, sans-serif;

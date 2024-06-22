@@ -2,27 +2,29 @@
 <div class="container">
         <section class="about-us">
             <div class="image-text-container">
-                <div class="image-placeholder">
+                <div class="image-container">
                     <img src="https://static.vecteezy.com/system/resources/previews/005/661/870/large_2x/psychologist-and-female-patient-in-psychotherapy-session-free-vector.jpg" alt="Company Vector Image">
+                    <!-- <a href="https://www.vecteezy.com/vector-art/5661870-psychologist-and-female-patient-in-psychotherapy-session">Psychologist and Female Patient in Psychotherapy Session Vectors by Vecteezy</a> -->
                 </div>
                 <div class="text-content">
                     <div class="motto">
                         <h2>Motto</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac nunc quis magna cursus egestas. Integer elementum luctus lectus eget aliquet. Integer ullamcorper nulla ut libero convallis, et scelerisque.</p>
+                        <p>Empowering students to navigate life's challenges with resilience and courage.</p>
                     </div>
                     <div class="vision">
                         <h2>Vision</h2>
-                        <p>To be a beacon of hope and healing for individuals seeking a brighter future.</p>
+                        <p>To create a supportive and understanding environment where every student feels valued and empowered to achieve their full potential.</p>
                     </div>
                     <div class="mission">
                         <h2>Mission</h2>
-                        <p>To empower individuals to overcome challenges and achieve emotional well-being.</p>
+                        <p>To provide compassionate, comprehensive counseling services that support student well-being, academic success, and personal growth.</p>
                     </div>
                 </div>
             </div>
+            <br>
             <div class="how-we-do">
-                <h2>How do we do things at COMPANY?</h2>
-                <p>By creating a visual guide along the way, the designer or developer can get input from the other people involved in the website such as the customer, their family and friends, and the team at COMPANY.</p>
+                <h2>How do we do things here?</h2>
+                <p>By fostering a collaborative and inclusive atmosphere, we engage students in meaningful conversations, offer evidence-based interventions, and work together towards achieving emotional balance and academic excellence.</p>
             </div>
         </section>
     </div>
