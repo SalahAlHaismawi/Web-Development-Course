@@ -25,6 +25,7 @@ include ('includes/footer.php');
     }
 
     .container {
+        min-width: 100%;
         backdrop-filter: blur(10px);
         background-color: rgba(255, 255, 255, 0.7);
     }
