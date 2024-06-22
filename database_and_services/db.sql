@@ -10,8 +10,8 @@ CREATE TABLE Students (
     username VARCHAR(20) UNIQUE NOT NULL, 
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL, 
-    role ENUM('student') NOT NULL
-    profile_pic VARCHAR(255) NOT NULL
+    role ENUM('student') NOT NULL,
+    profile_picture VARCHAR(255) NOT NULL
 
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE Admin (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL, 
     role ENUM('administrator') NOT NULL,
-    profile_pic VARCHAR(255) NOT NULL
+    profile_picture VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Counselors (
@@ -30,7 +30,7 @@ CREATE TABLE Counselors (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL, 
     role ENUM('counselor') NOT NULL,
-    profile_pic VARCHAR(255) NOT NULL
+    profile_picture VARCHAR(255) NOT NULL
 
 );
 
