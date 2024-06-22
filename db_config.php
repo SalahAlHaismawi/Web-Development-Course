@@ -1,19 +1,21 @@
 <?php
-function OpenConnection()
-{
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "counseling_app";
+function OpenConnection() {
+    // Replace with the name of the database on ur local machine
+    $dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $dbname = "app";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
     return $conn;
+}
+
+function CloseConnection($conn) {
+    $conn->close();
 }
 ?>
