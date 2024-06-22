@@ -3,21 +3,19 @@ session_start();
 require_once('../db_config.php');
 $conn = OpenConnection();
 
-// Fetch pending requests for counseling
-$pending_requests_query = "SELECT cs.session_id, cs.student_id, s.username as student_name, cs.counselor_id, c.username as counselor_name, cs.date, cs.time 
-                           FROM counseling_sessions cs
-                           JOIN Students s ON cs.student_id = s.user_id
-                           JOIN Counselors c ON cs.counselor_id = c.user_id
-                           WHERE cs.status = 'pending'";
-$pending_requests_result = mysqli_query($conn, $pending_requests_query);
+// Ensure user is logged in and is an admin
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'administrator') {
+    header('Location: ../index.php');
+    exit();
+}
 
-// Fetch accepted requests for counseling
-$accepted_requests_query = "SELECT cs.session_id, cs.student_id, s.username as student_name, cs.counselor_id, c.username as counselor_name, cs.date, cs.time 
-                            FROM counseling_sessions cs
-                            JOIN Students s ON cs.student_id = s.user_id
-                            JOIN Counselors c ON cs.counselor_id = c.user_id
-                            WHERE cs.status = 'accepted'";
-$accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
+// Fetch all users
+$users_query = "SELECT * FROM Students UNION SELECT * FROM Counselors UNION SELECT * FROM Admin";
+$users_result = mysqli_query($conn, $users_query);
+
+// Fetch FAQs
+$faqs_query = "SELECT * FROM faqs";
+$faqs_result = mysqli_query($conn, $faqs_query);
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +24,7 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../StudentDashboard.css">
+    <link rel="stylesheet" href="StudentDashboard.css">
 </head>
 <body>
     <div class="header">
@@ -45,66 +43,105 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
         <?php endif; ?>
         <div class="main">
             <div class="section">
-                <h2>View Counseling Requests</h2>
-                <?php if (mysqli_num_rows($pending_requests_result) > 0): ?>
-                    <table>
+                <h2>Manage Users</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                    <?php while ($row = mysqli_fetch_assoc($users_result)): ?>
                         <tr>
-                            <th>Student</th>
-                            <th>Counselor</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Action</th>
+                            <td><?php echo htmlspecialchars($row['user_id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['username']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['role']); ?></td>
+                            <td>
+                                <form action="../manage_users.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+                                    <input type="hidden" name="action" value="edit">
+                                    <button type="submit" class="btn">Edit</button>
+                                </form>
+                                <form action="../manage_users.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+                                    <input type="hidden" name="action" value="delete">
+                                    <button type="submit" class="btn">Delete</button>
+                                </form>
+                            </td>
                         </tr>
-                        <?php while ($row = mysqli_fetch_assoc($pending_requests_result)): ?>
-                            <tr>
-                                <td><?php echo $row['student_name']; ?></td>
-                                <td><?php echo $row['counselor_name']; ?></td>
-                                <td><?php echo $row['date']; ?></td>
-                                <td><?php echo $row['time']; ?></td>
-                                <td>
-                                    <form action="../update_request_status.php" method="post">
-                                        <input type="hidden" name="session_id" value="<?php echo $row['session_id']; ?>">
-                                        <input type="hidden" name="status" value="accepted">
-                                        <button type="submit" class="btn">Accept</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </table>
-                <?php else: ?>
-                    <p>No pending requests.</p>
-                <?php endif; ?>
+                    <?php endwhile; ?>
+                </table>
+                <form action="../manage_users.php" method="post">
+                    <h3>Add New User</h3>
+                    <input type="hidden" name="action" value="add">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" name="role" required>
+                            <option value="" disabled selected>Select role</option>
+                            <option value="student">Student</option>
+                            <option value="counselor">Counselor</option>
+                            <option value="administrator">Administrator</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Add User</button>
+                </form>
             </div>
             <div class="section">
-                <h2>Accepted Requests</h2>
-                <?php if (mysqli_num_rows($accepted_requests_result) > 0): ?>
-                    <table>
+                <h2>Manage FAQs</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Action</th>
+                    </tr>
+                    <?php while ($row = mysqli_fetch_assoc($faqs_result)): ?>
                         <tr>
-                            <th>Student</th>
-                            <th>Counselor</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Action</th>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['question']); ?></td>
+                            <td><?php echo htmlspecialchars($row['answer']); ?></td>
+                            <td>
+                                <form action="../manage_faqs.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="faq_id" value="<?php echo $row['id']; ?>">
+                                    <input type="hidden" name="action" value="edit">
+                                    <button type="submit" class="btn">Edit</button>
+                                </form>
+                                <form action="../manage_faqs.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="faq_id" value="<?php echo $row['id']; ?>">
+                                    <input type="hidden" name="action" value="delete">
+                                    <button type="submit" class="btn">Delete</button>
+                                </form>
+                            </td>
                         </tr>
-                        <?php while ($row = mysqli_fetch_assoc($accepted_requests_result)): ?>
-                            <tr>
-                                <td><?php echo $row['student_name']; ?></td>
-                                <td><?php echo $row['counselor_name']; ?></td>
-                                <td><?php echo $row['date']; ?></td>
-                                <td><?php echo $row['time']; ?></td>
-                                <td>
-                                    <form action="../update_request_status.php" method="post">
-                                        <input type="hidden" name="session_id" value="<?php echo $row['session_id']; ?>">
-                                        <input type="hidden" name="status" value="completed">
-                                        <button type="submit" class="btn">Mark as Done</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </table>
-                <?php else: ?>
-                    <p>No accepted requests.</p>
-                <?php endif; ?>
+                    <?php endwhile; ?>
+                </table>
+                <form action="../manage_faqs.php" method="post">
+                    <h3>Add New FAQ</h3>
+                    <input type="hidden" name="action" value="add">
+                    <div class="form-group">
+                        <label for="question">Question</label>
+                        <input type="text" id="question" name="question" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="answer">Answer</label>
+                        <textarea id="answer" name="answer" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Add FAQ</button>
+                </form>
             </div>
         </div>
     </div>

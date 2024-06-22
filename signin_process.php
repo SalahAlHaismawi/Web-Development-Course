@@ -30,7 +30,6 @@ function process_signin() {
             ];
 
             if (isset($_POST['rememberme'])) {
-                // Cookies set for 7 days before expiring
                 setcookie('user', json_encode($_SESSION['user']), time() + (86400 * 7), "/");
             }
 
@@ -49,9 +48,11 @@ function process_signin() {
             }
             exit();
         } else {
+            error_log("Password does not match for user: $email");
             return "Invalid email or password.";
         }
     } else {
+        error_log("No user found with email: $email");
         return "Invalid email or password.";
     }
 }
