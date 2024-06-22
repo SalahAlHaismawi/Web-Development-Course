@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS counseling_sessions;
 DROP TABLE IF EXISTS Counselors;
 DROP TABLE IF EXISTS Admin;
 DROP TABLE IF EXISTS Students;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE Students (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -47,3 +48,5 @@ CREATE TABLE reviews (
     FOREIGN KEY (session_id) REFERENCES counseling_sessions(session_id)
     -- Additional fields as needed
 );
+
+INSERT INTO Admin (username, email, password, role) VALUES ('adminUser', 'admin@example.com', '$2y$10$htmWadLYCOwGlaMbXvZsbuvuZ5BN9V412..uTMF4wl0IwBHTtX4/u', 'administrator');
