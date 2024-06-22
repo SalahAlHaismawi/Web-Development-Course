@@ -97,6 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 CloseConnection($conn);
 // Temporarily disable redirection
-// header('Location: ../profile/' . $role_file . '_profile.php');
+ header('Location: ../profile/' . $role_file . '_profile.php');
 exit();
 ?>
