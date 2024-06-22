@@ -56,6 +56,7 @@ form {
     min-width: 210px;
     width: 100%;
     max-width: 500px;
+    margin-bottom: 20px;
 }
 
 label {
@@ -158,14 +159,15 @@ nav ul li a.active {
     flex: 1;
     margin: 0px 20px;
     position: relative;
+}
 
-    img {
-        max-width: 100%;
-        max-height: 100%;
-        width: 100%; 
-        height: auto; 
-        object-fit: contain; 
-    }
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    
 }
 
 .text-content {
@@ -184,10 +186,6 @@ nav ul li a.active {
     grid-column: span 1; /* Each takes up one column */
     margin-right: 20px;
 }
-
-.vision {
-}
-
 
 
 /* FAQ */

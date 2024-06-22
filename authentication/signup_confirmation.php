@@ -2,7 +2,7 @@
 session_start(); 
 
 if(!isset($_SESSION['message'])){
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 
 $message = $_SESSION['message']; 
@@ -41,6 +41,11 @@ $redirectUrl = $_SESSION['redirectUrl'];
 
             if (countdown === 0) {
                 clearInterval(intervalId);
+                if(redirectUrl === "index.php"){
+
+                } else {
+                    window.location.href = `../${redirectUrl}`
+                }
                 window.location.href = redirectUrl;
             }
         }, 1000);

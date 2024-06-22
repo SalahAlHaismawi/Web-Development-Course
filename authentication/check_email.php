@@ -4,7 +4,8 @@ $conn = OpenConnection();
 
 if (isset($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
+    if (!preg_match($emailRegex, $email)) {
         echo "<span style='color:red;'>Invalid email format.</span>";
     } else {
         // Check if email already exists in any of the tables
