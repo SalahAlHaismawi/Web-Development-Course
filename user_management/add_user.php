@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('db_config.php');
+require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
 if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm_password']) && isset($_POST['role'])) {

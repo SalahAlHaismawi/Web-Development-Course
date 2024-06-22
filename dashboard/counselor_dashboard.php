@@ -31,7 +31,7 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
     <meta charset="UTF-8">
     <title>Counselor Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="StudentDashboard.css">
+    <link rel="stylesheet" href="../assets/css/dashboards.css">
 </head>
 <body>
     <div class="header">
