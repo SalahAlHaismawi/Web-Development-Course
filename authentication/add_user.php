@@ -57,7 +57,7 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
     header("Location: signup_confirmation.php");
     exit();
 } else {
-    header("location: index.php");
+    header("location: ../index.php");
     exit();
 }
 
