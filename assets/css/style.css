@@ -238,3 +238,60 @@ nav ul li a.active {
     max-height: 1000px; /* Set to a value higher than you expect any answer to be */
     padding: 10px 20px; /* Restore padding when expanded */
 }
+
+/* Contacts */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.user-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user {
+    flex-basis: calc(50% - 20px);
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user h3, .user p {
+    margin: 10px 0;
+}
+
+.user p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user p:hover {
+    overflow: visible;
+    white-space: normal;
+}
+
+@media (max-width: 768px) {
+    .user-container {
+        justify-content: center;
+    }
+
+    .user {
+        flex-basis: 90%;
+    }
+}

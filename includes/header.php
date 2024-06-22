@@ -26,6 +26,9 @@
                     <li><a class="<?= basename($_SERVER['PHP_SELF']) == 'faq.php' ? 'active' : '' ?>"
                             href="/Web-Development-Course/faq_management/faq.php">FAQ</a></li>
                     <li>|</li>
+                    <li><a class="<?= basename($_SERVER['PHP_SELF']) == 'contacts.php' ? 'active' : '' ?>"
+                            href="/Web-Development-Course/contacts.php">Contacts</a></li>
+                    <li>|</li>
                     <li><a class="<?= basename($_SERVER['PHP_SELF']) == 'signin.php' ? 'active' : '' ?>"
                             href="/Web-Development-Course/authentication/signin.php">Sign In</a></li>
                     <li>|</li>
