@@ -4,7 +4,7 @@ require_once('../includes/header.php');
 ?>
 <div class="container">
 <h2>Sign Up</h2>
-<form action="../user_management/add_user.php" method="post" onsubmit="return validateForm()">
+<form action="add_user.php" method="post" onsubmit="return validateForm()">
     <label for="email">Email</label>
     <input type="email" id="email" name="email" oninput="debounce(checkEmail, 1100)(event)" required>
     <span id="email-result"></span><br><br>
