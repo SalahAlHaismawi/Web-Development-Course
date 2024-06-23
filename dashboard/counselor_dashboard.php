@@ -67,7 +67,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
             <div class="section">
                 <h2>View Counseling Requests</h2>
                 <?php if (mysqli_num_rows($requests_result) > 0): ?>
-                    <table>
+                    <table class="table-responsive">
                         <tr>
                             <th>Student</th>
                             <th>Date</th>
@@ -96,7 +96,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
             <div class="section">
                 <h2>Accepted Requests</h2>
                 <?php if (mysqli_num_rows($accepted_requests_result) > 0): ?>
-                    <table>
+                    <table class="table-responsive">
                         <tr>
                             <th>Student</th>
                             <th>Date</th>

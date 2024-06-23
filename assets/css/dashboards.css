@@ -35,11 +35,12 @@ body {
 
 .main {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .section {
+
     background: #fff;
     padding: 20px;
     margin-top: 20px;
@@ -70,6 +71,11 @@ body {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+.table-fix{
+    overflow-x: auto;
+
 }
 
 .form-group select{
@@ -116,20 +122,37 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+   display: flex;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
 th, td {
     padding: 10px;
     text-align: left;
+    border: 1px solid #ddd;
 }
 
 th {
     background-color: #f4f4f4;
 }
+
+@media (max-width: 600px) {
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
 .logoutButton {
     display: inline-block;
     padding: 15px;

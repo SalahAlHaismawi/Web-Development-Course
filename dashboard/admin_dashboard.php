@@ -55,7 +55,7 @@ $faqs_result = mysqli_query($conn, $faqs_query);
         <div class="main">
             <div class="section">
                 <h2>Manage Users</h2>
-                <table class="table">
+                <table class="table-responsive">
                     <tr>
                         <th>ID</th>
                         <th>Username</th>
@@ -114,7 +114,7 @@ $faqs_result = mysqli_query($conn, $faqs_query);
             </div>
             <div class="section">
                 <h2>Manage FAQs</h2>
-                <table>
+                <table class="table-responsive">
                     <tr>
                         <th>ID</th>
                         <th>Question</th>
