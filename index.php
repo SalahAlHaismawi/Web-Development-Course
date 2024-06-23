@@ -2,6 +2,10 @@
 include ('includes/header.php');
 ?>
 <div class="container">
+    <img class="student-image" src="./assets/images/studentDrawing.jpg"/>
+    <div class="promo-text">
+        <h1>For Students by Students</h1>
+    </div>
     <div class="container2">
         <h1>Welcome to MMU Counseling Services</h1>
         <strong>Your one-stop solution for booking counseling sessions.</strong>

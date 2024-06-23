@@ -12,16 +12,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'administrator') 
 // Fetch all users
 $users_query = "SELECT * FROM Students UNION SELECT * FROM Counselors UNION SELECT * FROM Admin";
 $users_result = mysqli_query($conn, $users_query);
-if (!$users_result) {
-    die("Error fetching users: " . mysqli_error($conn));
-}
 
 // Fetch FAQs
 $faqs_query = "SELECT * FROM faqs";
 $faqs_result = mysqli_query($conn, $faqs_query);
-if (!$faqs_result) {
-    die("Error fetching FAQs: " . mysqli_error($conn));
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,16 +27,19 @@ if (!$faqs_result) {
 </head>
 <body>
     <div class="header">
-        <div class="container">
-            <h1>Admin Dashboard</h1>
-            <a href="../profile/admin_profile.php" class="btn-profile">Profile</a>
+                    <h1>Admin Dashboard</h1>
+
+        <div class="button-container">
+            <a href="../profile/admin_profile.php" class="btn round-button">Profile</a>
+        <a href="../authentication/logout.php" class="btn logoutButton">Logout</a>
+
         </div>
     </div>
     <div class="container">
         <?php if (isset($_SESSION['message'])): ?>
             <div class="alert">
-                <?php 
-                    echo $_SESSION['message']; 
+                <?php
+                    echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 ?>
             </div>
@@ -67,11 +64,12 @@ if (!$faqs_result) {
                             <td>
                                 <form action="../user_management/manage_users.php" method="post" style="display:inline;">
                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
-                                    <input type="hidden" name="action" value="edit">
-                                    <button type="submit" class="btn">Edit</button>
+                                    <input type="hidden" name="role" value="<?php echo $row['role']; ?>">
+
                                 </form>
                                 <form action="../user_management/manage_users.php" method="post" style="display:inline;">
                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+                                    <input type="hidden" name="role" value="<?php echo $row['role']; ?>">
                                     <input type="hidden" name="action" value="delete">
                                     <button type="submit" class="btn">Delete</button>
                                 </form>
@@ -123,8 +121,7 @@ if (!$faqs_result) {
                             <td>
                                 <form action="../faq_management/manage_faqs.php" method="post" style="display:inline;">
                                     <input type="hidden" name="faq_id" value="<?php echo $row['id']; ?>">
-                                    <input type="hidden" name="action" value="edit">
-                                    <button type="submit" class="btn">Edit</button>
+
                                 </form>
                                 <form action="../faq_management/manage_faqs.php" method="post" style="display:inline;">
                                     <input type="hidden" name="faq_id" value="<?php echo $row['id']; ?>">
@@ -151,7 +148,6 @@ if (!$faqs_result) {
             </div>
         </div>
     </div>
-    <?php require_once('../includes/footer.php'); ?>
 </body>
 </html>
 

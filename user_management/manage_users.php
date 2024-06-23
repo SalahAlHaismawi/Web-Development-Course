@@ -69,6 +69,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
+        // Delete related records in counseling_sessions
+        if ($role === 'student') {
+            $query = "DELETE FROM counseling_sessions WHERE student_id = ?";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "i", $user_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        } elseif ($role === 'counselor') {
+            $query = "DELETE FROM counseling_sessions WHERE counselor_id = ?";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "i", $user_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        }
+
+        // Now delete the user
         $query = "DELETE FROM $table WHERE user_id = ?";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -76,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_stmt_execute($stmt)) {
             $_SESSION['message'] = "User deleted successfully.";
         } else {
-            $_SESSION['message'] = "Error: " . mysqli_error($conn);
+            $_SESSION['message'] = "Error deleting user: " . mysqli_error($conn);
         }
         mysqli_stmt_close($stmt);
     }

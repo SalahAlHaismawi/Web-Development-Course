@@ -286,6 +286,40 @@ nav ul li a.active {
     white-space: normal;
 }
 
+.student-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+.promo-text
+{
+    text-align: center;
+    font-size: 2rem;
+    color: #0056b3;
+    margin-bottom: 20px;
+
+}
+.mmu-logo
+{
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 100%;
+}
 @media (max-width: 768px) {
     .user-container {
         justify-content: center;

@@ -25,6 +25,8 @@ $sessions_result = mysqli_query($conn, $sessions_query);
     <div class="header">
         <div class="container">
             <h1>Student Dashboard</h1>
+            <a href="../profile/counselor_profile.php" class="round-button">Profile</a>
+
         </div>
     </div>
     <div class="container">

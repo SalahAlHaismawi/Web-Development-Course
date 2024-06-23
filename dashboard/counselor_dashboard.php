@@ -37,6 +37,8 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
     <div class="header">
         <div class="container">
             <h1>Counselor Dashboard</h1>
+            <a href="../profile/counselor_profile.php" class="round-button">Profile</a>
+
         </div>
     </div>
     <div class="container">

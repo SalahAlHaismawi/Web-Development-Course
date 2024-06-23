@@ -12,12 +12,15 @@ $table = '';
 switch ($role) {
     case 'administrator':
         $table = 'Admin';
+        $dashboard_url = '../dashboard/admin_dashboard.php';
         break;
     case 'counselor':
         $table = 'Counselor';
+        $dashboard_url = '../dashboard/counselor_dashboard.php';
         break;
     case 'student':
         $table = 'Student';
+        $dashboard_url = '../dashboard/student_dashboard.php';
         break;
     default:
         $_SESSION['message'] = "Invalid user role.";
@@ -61,7 +64,7 @@ if (!$user) {
             </div>
         <?php endif; ?>
         <div class="profile">
-            <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
+            <form action="../user_management/upload_profile_picture.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="user_id" value="<?php echo $user['user_id']; ?>">
                 <input type="hidden" name="role" value="<?php echo $role; ?>">
                 <div class="form-group">
@@ -72,10 +75,11 @@ if (!$user) {
                     <button type="submit" class="btn">Upload Picture</button>
                 </div>
             </form>
-            <?php if (isset($user['profile_picture']) && $user['profile_picture']): ?>
-                <img src="../uploads/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
+            <?php if (isset($user['profile_pic']) && $user['profile_pic']): ?>
+                <img src="../uploads/<?php echo htmlspecialchars($user['profile_pic']); ?>" alt="Profile Picture">
             <?php endif; ?>
         </div>
+        <a href="<?php echo $dashboard_url; ?>" class="btn">Back to Dashboard</a>
     </div>
 </body>
 </html>

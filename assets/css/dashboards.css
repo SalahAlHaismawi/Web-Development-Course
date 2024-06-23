@@ -6,29 +6,37 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     overflow: hidden;
-}
+    padding: 0 10px;
 
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
 .header {
-    background: #333;
+    background: #0056B3;
     color: #fff;
-    padding-top: 30px;
-    min-height: 70px;
+    padding: 20px 0;
+    min-height: 60px;
     border-bottom: #77aaff 3px solid;
+
 }
 
 .header h1 {
     text-align: center;
     text-transform: uppercase;
     margin: 0;
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .main {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .section {
@@ -85,7 +93,7 @@ body {
 .alert {
     margin: 20px 0;
     padding: 20px;
-    background-color: #f44336;
+    background-color: #1e9113;
     color: white;
     text-align: center;
 }
@@ -112,3 +120,86 @@ th, td {
 th {
     background-color: #f4f4f4;
 }
+.logoutButton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.logoutButton:hover {
+    background-color: #ff0000;
+}
+
+.logoutButton:active {
+    background-color: #003f7f;
+}
+.round-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.round-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.round-button:hover {
+    background-color: #1e9113;
+}
+
+.round-button:active {
+    background-color: #003f7f;
+}
+.round-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.round-button:hover {
+    background-color: #1e9113;
+}
+
+.round-button:active {
+    background-color: #003f7f;
+}
+
+/* Responsive Styles *
