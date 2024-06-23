@@ -15,7 +15,7 @@
     <header>
         <div class="nav-container">
             <a class="ref-container" href="https://www.mmu.edu.my/" target="_blank">
-                <h1 style="color:white; font-size: 1.5rem">MMU Counselling Services</h1>
+                <h1 style="color:white; font-size: 1.5rem;">MMU Counselling Services</h1>
                 <img class="mmu-logo" src="/Web-Development-Course/assets/images/Multimedia_University_Logo.jpg" alt="MMU Logo" />
             </a>
             <a href="/Web-Development-Course/index.php">
