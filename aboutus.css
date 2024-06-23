@@ -61,8 +61,7 @@ body {
   margin-top: 3.5rem !important;
 }
 
-.img-wrapper img {
-  min-height: 314px;
+.hero .img-wrapper img {
   object-fit: contain;
 }
 
@@ -149,7 +148,8 @@ h2 {
 }
 
 .hero {
-  padding: 2rem 0;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .description {
@@ -225,7 +225,9 @@ h2 {
 }
 
 .mobile-nav {
-  position: absolute;
+  position: fixed;
+  z-index: 999;
+  overflow-y: hidden;
   inset: 0;
   background: #000;
   z-index: 999;
@@ -243,7 +245,7 @@ h2 {
 }
 
 .hero2 {
-  margin-top: 4rem;
+  padding-top: 2.5rem;
 }
 .mobile-nav .links-list {
   flex-direction: column;
@@ -313,11 +315,8 @@ h2 {
     display: block;
     width: 85%;
     margin: 0 auto;
-
   }
 }
-
-
 
 @media screen and (max-width: 60em) {
   html {
