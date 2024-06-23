@@ -19,4 +19,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 CloseConnection($conn);
 header('Location: ../dashboard/counselor_dashboard.php');
 exit();
-?>
+

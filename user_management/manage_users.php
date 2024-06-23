@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $table = ucfirst($role) . 's';
 
-        // Validate the table name
         if (!in_array($table, ['Students', 'Counselors', 'Admins'])) {
             $_SESSION['message'] = "Invalid role selected.";
             header('Location: ../dashboard/admin_dashboard.php');
@@ -39,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $table = ucfirst($role) . 's';
 
-        // Validate the table name
         if (!in_array($table, ['Students', 'Counselors', 'Admins'])) {
             $_SESSION['message'] = "Invalid role selected.";
             header('Location: ../dashboard/admin_dashboard.php');
@@ -62,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $table = ucfirst($role) . 's';
 
-        // Validate the table name
         if (!in_array($table, ['Students', 'Counselors', 'Admins'])) {
             $_SESSION['message'] = "Invalid role selected.";
             header('Location: ../dashboard/admin_dashboard.php');

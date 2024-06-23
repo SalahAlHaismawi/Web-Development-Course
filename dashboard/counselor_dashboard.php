@@ -84,7 +84,14 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                                         <input type="hidden" name="session_id" value="<?php echo htmlspecialchars($row['session_id']); ?>">
                                         <input type="hidden" name="status" value="accepted">
                                         <button type="submit" class="btn">Accept</button>
+
                                     </form>
+
+                                    <form action="../session_management/update_request_status.php" method="post" style="display: inline;">
+                        <input type="hidden" name="session_id" value="<?php echo htmlspecialchars($row['session_id']); ?>">
+                        <input type="hidden" name="status" value="rejected">
+                        <button type="submit" class="btn-decline">Decline</button>
+                                         </form>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

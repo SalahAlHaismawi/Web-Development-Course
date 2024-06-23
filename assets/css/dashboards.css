@@ -54,6 +54,17 @@ body {
     color: #333;
 }
 
+.btn-decline {
+    margin-top: 20px;
+    display: inline-block;
+    background: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 .form-group {
     margin-bottom: 15px;
