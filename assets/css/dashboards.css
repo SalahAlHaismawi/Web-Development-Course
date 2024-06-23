@@ -53,8 +53,10 @@ body {
     color: #333;
 }
 
+
 .form-group {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .form-group label {
@@ -63,13 +65,21 @@ body {
 }
 
 .form-group input,
-.form-group select,
 .form-group textarea {
-    width: 100%;
+    width: 98%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
+.form-group select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+}
+
 
 .form-group textarea {
     resize: vertical;
@@ -122,17 +132,23 @@ th {
 }
 .logoutButton {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 14px;
     font-weight: bold;
     color: white;
     background-color: #333333;
     border: none;
-    border-radius: 25px;
+    border-radius: 20%;
     text-align: center;
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
+}
+
+.profile-section-class {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .logoutButton:hover {
@@ -144,33 +160,20 @@ th {
 }
 .round-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 10px 10px 10px;
     font-size: 16px;
     font-weight: bold;
     color: white;
     background-color: #333333;
     border: none;
-    border-radius: 25px;
+    border-radius: 100%;
     text-align: center;
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
-.round-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background-color: #333333;
-    border: none;
-    border-radius: 25px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-}
+
 
 .round-button:hover {
     background-color: #1e9113;
@@ -179,20 +182,7 @@ th {
 .round-button:active {
     background-color: #003f7f;
 }
-.round-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background-color: #333333;
-    border: none;
-    border-radius: 25px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-}
+
 
 .round-button:hover {
     background-color: #1e9113;
@@ -201,5 +191,7 @@ th {
 .round-button:active {
     background-color: #003f7f;
 }
+
+
 
 /* Responsive Styles *

@@ -14,16 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $role_file = 'admin';
             break;
         case 'counselor':
-            $table = 'Counselor';
+            $table = 'Counselors';
             $role_file = 'counselor';
             break;
         case 'student':
-            $table = 'Student';
+            $table = 'Students';
             $role_file = 'student';
             break;
         default:
             $_SESSION['message'] = "Invalid user role.";
-            echo $_SESSION['message'];
+            header('Location: ../profile/' . $role_file . '_profile.php');
             exit();
     }
 
@@ -35,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir($target_dir, 0755, true);
         }
 
-        $target_file = $target_dir . basename($_FILES["profile_picture"]["name"]);
+        // Generate a unique file name to prevent overwriting
+        $filename = uniqid() . '-' . basename($_FILES["profile_picture"]["name"]);
+        $target_file = $target_dir . $filename;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -45,58 +47,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadOk = 1;
         } else {
             $_SESSION['message'] = "File is not an image.";
-            echo $_SESSION['message'];
             $uploadOk = 0;
         }
 
         // Check file size
         if ($_FILES["profile_picture"]["size"] > 500000) {
             $_SESSION['message'] = "Sorry, your file is too large.";
-            echo $_SESSION['message'];
             $uploadOk = 0;
         }
 
         // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+        if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
             $_SESSION['message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            echo $_SESSION['message'];
             $uploadOk = 0;
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             $_SESSION['message'] = "Sorry, your file was not uploaded.";
-            echo $_SESSION['message'];
         } else {
-            // Debugging information
-            error_log("Attempting to move uploaded file from: " . $_FILES["profile_picture"]["tmp_name"]);
-            error_log("To target path: " . $target_file);
-
             if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
-                $filename = basename($_FILES["profile_picture"]["name"]);
                 $query = "UPDATE $table SET profile_picture = '$filename' WHERE user_id = '$user_id'";
                 if (mysqli_query($conn, $query)) {
                     $_SESSION['message'] = "Profile picture uploaded successfully.";
-                    echo $_SESSION['message'];
                 } else {
                     $_SESSION['message'] = "Error: " . mysqli_error($conn);
-                    echo $_SESSION['message'];
                 }
             } else {
                 $_SESSION['message'] = "Sorry, there was an error uploading your file.";
-                echo $_SESSION['message'];
-                error_log("Error moving uploaded file.");
             }
         }
     } else {
         $_SESSION['message'] = "No file was uploaded.";
-        echo $_SESSION['message'];
-        error_log("No file uploaded or upload error: " . $_FILES["profile_picture"]["error"]);
     }
 }
 
 CloseConnection($conn);
-// Temporarily disable redirection
- header('Location: ../profile/' . $role_file . '_profile.php');
+header('Location: ../profile/' . $role_file . '_profile.php');
 exit();
 ?>

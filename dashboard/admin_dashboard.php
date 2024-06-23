@@ -21,17 +21,25 @@ $faqs_result = mysqli_query($conn, $faqs_query);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title >Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/dashboards.css">
 </head>
 <body>
     <div class="header">
-                    <h1>Admin Dashboard</h1>
 
         <div class="button-container">
-            <a href="../profile/admin_profile.php" class="btn round-button">Profile</a>
-        <a href="../authentication/logout.php" class="btn logoutButton">Logout</a>
+
+            <a href="../profile/admin_profile.php" class=" round-button">
+                <img style="width: 30px; height: 30px; border-radius: 100%" src="../assets/images/profileIcon.jpg" alt="Profile Icon" class="profile-section-class">
+            </a>
+                                <h1>Admin Dashboard</h1>
+
+        <a href="../authentication/logout.php" class=" logoutButton">
+
+            <span style="padding: ">Logout</span>
+             <i class="fas fa-sign-out-alt"></i>
+        </a>
 
         </div>
     </div>
@@ -47,7 +55,7 @@ $faqs_result = mysqli_query($conn, $faqs_query);
         <div class="main">
             <div class="section">
                 <h2>Manage Users</h2>
-                <table>
+                <table class="table">
                     <tr>
                         <th>ID</th>
                         <th>Username</th>

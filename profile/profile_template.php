@@ -5,6 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
 require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
 
+if (!isset($_SESSION['user'])) {
+    header('Location: ../authentication/signin.php');
+    exit();
+}
+
 $user_id = $_SESSION['user']['user_id'];
 $role = $_SESSION['user']['role'];
 $table = '';
@@ -15,11 +20,11 @@ switch ($role) {
         $dashboard_url = '../dashboard/admin_dashboard.php';
         break;
     case 'counselor':
-        $table = 'Counselor';
+        $table = 'Counselors';
         $dashboard_url = '../dashboard/counselor_dashboard.php';
         break;
     case 'student':
-        $table = 'Student';
+        $table = 'Students';
         $dashboard_url = '../dashboard/student_dashboard.php';
         break;
     default:
@@ -49,6 +54,30 @@ if (!$user) {
     <meta charset="UTF-8">
     <title><?php echo ucfirst($role); ?> Profile</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .profile-pic {
+            display: block;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .profile-container > .info-container {
+            flex: 1 1 calc(50% - 1.5rem);
+            box-sizing: border-box;
+        }
+        .title-text {
+            font-size: 1.2em;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -64,7 +93,30 @@ if (!$user) {
             </div>
         <?php endif; ?>
         <div class="profile">
-            <form action="../user_management/upload_profile_picture.php" method="post" enctype="multipart/form-data">
+            <!-- Display the profile picture at the top -->
+
+
+            <form action="./upload_profile_picture.php" method="post" enctype="multipart/form-data">
+                <h2 style="text-align: center">Profile Information</h2>
+
+                <?php if (isset($user['profile_picture']) && $user['profile_picture']): ?>
+                <img src="../uploads/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture" class="profile-pic">
+            <?php endif; ?>
+                <div class="profile-container">
+                   <div class="info-container">
+                       <h1 class="title-text">USERNAME:</h1>
+                       <p class="profile-text"><?php echo htmlspecialchars($user['username']); ?></p>
+                   </div>
+                   <div class="info-container">
+                       <h1 class="title-text">E-MAIL:</h1>
+                       <p class="profile-text"><?php echo htmlspecialchars($user['email']); ?></p>
+                   </div>
+                   <div class="info-container">
+                       <h1 class="title-text">ROLE:</h1>
+                       <p class="profile-text"><?php echo htmlspecialchars($user['role']); ?></p>
+                   </div>
+               </div>
+
                 <input type="hidden" name="user_id" value="<?php echo $user['user_id']; ?>">
                 <input type="hidden" name="role" value="<?php echo $role; ?>">
                 <div class="form-group">
@@ -75,9 +127,6 @@ if (!$user) {
                     <button type="submit" class="btn">Upload Picture</button>
                 </div>
             </form>
-            <?php if (isset($user['profile_pic']) && $user['profile_pic']): ?>
-                <img src="../uploads/<?php echo htmlspecialchars($user['profile_pic']); ?>" alt="Profile Picture">
-            <?php endif; ?>
         </div>
         <a href="<?php echo $dashboard_url; ?>" class="btn">Back to Dashboard</a>
     </div>

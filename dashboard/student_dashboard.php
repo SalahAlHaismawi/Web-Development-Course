@@ -2,7 +2,10 @@
 session_start();
 require_once('../database_and_services/db_config.php');
 $conn = OpenConnection();
-
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'student') {
+    header('Location: ../index.php');
+    exit();
+}
 // Fetch counselors for the dropdown
 $counselors_query = "SELECT user_id, username FROM Counselors";
 $counselors_result = mysqli_query($conn, $counselors_query);
@@ -17,16 +20,25 @@ $sessions_result = mysqli_query($conn, $sessions_query);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Dashboard</title>
+    <title >Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/dashboards.css">
 </head>
 <body>
     <div class="header">
-        <div class="container">
-            <h1>Student Dashboard</h1>
-            <a href="../profile/counselor_profile.php" class="round-button">Profile</a>
 
+        <div class="button-container">
+
+            <a href="../profile/student_profile.php" class=" round-button">
+                <img style="width: 30px; height: 30px; border-radius: 100%" src="../assets/images/profileIcon.jpg" alt="Profile Icon" class="profile-section-class">
+            </a>
+                                <h1>Student Dashboard</h1>
+
+        <a href="../authentication/logout.php" class=" logoutButton">
+
+            <span style="padding: ">Logout</span>
+             <i class="fas fa-sign-out-alt"></i>
+        </a>
         </div>
     </div>
     <div class="container">
@@ -44,7 +56,7 @@ $sessions_result = mysqli_query($conn, $sessions_query);
                 <form action="../session_management/create_session.php" method="post">
                     <div class="form-group">
                         <label for="counselor">Choose a Counselor</label>
-                        <select id="counselor" name="counselor_id" required>
+                        <select class="form-select" id="counselor" name="counselor_id" required>
                             <option value="" disabled selected>Select a counselor</option>
                             <?php while ($row = mysqli_fetch_assoc($counselors_result)) : ?>
                                 <option value="<?php echo $row['user_id']; ?>"><?php echo $row['username']; ?></option>
@@ -89,7 +101,7 @@ $sessions_result = mysqli_query($conn, $sessions_query);
             </div>
         </div>
     </div>
-    <?php require_once('../includes/footer.php'); ?>
+
 </body>
 </html>
 

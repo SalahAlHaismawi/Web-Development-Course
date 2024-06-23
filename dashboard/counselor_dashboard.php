@@ -24,6 +24,14 @@ $accepted_requests_query = "SELECT cs.session_id, cs.student_id, s.username as s
                             WHERE cs.counselor_id = '$counselor_id' AND cs.status = 'accepted'";
 $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
 
+// Fetch reviews for completed sessions
+$reviews_query = "SELECT r.review_id, r.session_id, r.rating, r.comment, s.username as student_name, cs.date, cs.time
+                  FROM reviews r
+                  JOIN counseling_sessions cs ON r.session_id = cs.session_id
+                  JOIN Students s ON cs.student_id = s.user_id
+                  WHERE cs.counselor_id = '$counselor_id'";
+$reviews_result = mysqli_query($conn, $reviews_query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,17 +43,22 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
 </head>
 <body>
     <div class="header">
-        <div class="container">
+        <div class="button-container">
+            <a href="../profile/counselor_profile.php" class="round-button">
+                <img style="width: 30px; height: 30px; border-radius: 100%" src="../assets/images/profileIcon.jpg" alt="Profile Icon" class="profile-section-class">
+            </a>
             <h1>Counselor Dashboard</h1>
-            <a href="../profile/counselor_profile.php" class="round-button">Profile</a>
-
+            <a href="../authentication/logout.php" class="logoutButton">
+                <span>Logout</span>
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </div>
     </div>
     <div class="container">
         <?php if (isset($_SESSION['message'])): ?>
             <div class="alert">
-                <?php 
-                    echo $_SESSION['message']; 
+                <?php
+                    echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 ?>
             </div>
@@ -109,9 +122,33 @@ $accepted_requests_result = mysqli_query($conn, $accepted_requests_query);
                     <p>No accepted requests.</p>
                 <?php endif; ?>
             </div>
+            <div class="section">
+                <h2>Reviews</h2>
+                <?php if (mysqli_num_rows($reviews_result) > 0): ?>
+                    <table>
+                        <tr>
+                            <th>Student</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Rating</th>
+                            <th>Comment</th>
+                        </tr>
+                        <?php while ($row = mysqli_fetch_assoc($reviews_result)): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['student_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['date']); ?></td>
+                                <td><?php echo htmlspecialchars($row['time']); ?></td>
+                                <td><?php echo htmlspecialchars($row['rating']); ?></td>
+                                <td><?php echo htmlspecialchars($row['comment']); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </table>
+                <?php else: ?>
+                    <p>No reviews available.</p>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
-    <?php require_once('../includes/footer.php'); ?>
 </body>
 </html>
 
