@@ -32,3 +32,4 @@ $conn = OpenConnection();
 </div>
 <script src="../assets/js/faq.js"></script>
 <?php require_once("../includes/footer.php"); ?>
+

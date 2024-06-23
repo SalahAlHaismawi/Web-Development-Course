@@ -362,6 +362,15 @@ text-students{
 /*    text color*/
     color: #ffffff;
 }
+.auth-picture-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+
+}
 @media (max-width: 768px) {
     .user-container {
         justify-content: center;

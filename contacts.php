@@ -3,11 +3,11 @@
 <div class="container">
     <div class="user-container">
         <div class="user">
-            <img src="uploads/Screenshot 2024-04-08 100952.png" alt="User 1 Profile Page">
-            <h3>Name: User 1</h3>
+            <img src="uploads/salah.jpeg" alt="User 1 Profile Page">
+            <h3>Name: Salah Fayeq</h3>
             <p><strong>Section ID:</strong> TC2L</p>
-            <p><strong>Student ID:</strong> 001</p>
-            <p><strong>Email:</strong> <a href="mailto:user1@example.com">user1@example.com</a></p>
+            <p><strong>Student ID:</strong> 1201303035</p>
+            <p><strong>Email:</strong> <a href="mailto:1201303035@student.mmu.edu.my">1201303035@student.mmu.edu.my</a></p>
         </div>
         <div class="user">
             <img src="uploads/jianyi.jpg" alt="Tan Jian Yi">

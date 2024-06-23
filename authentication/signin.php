@@ -9,7 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <div class="container">
     <h2>Sign In</h2>
+
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <div class="auth-picture-container">
+            <img class="student-image" src="../assets/images/studentDrawing.jpg"/>
+
+        </div>
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required><br><br>
         <label for="password">Password</label>
