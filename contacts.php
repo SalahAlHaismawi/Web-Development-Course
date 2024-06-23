@@ -28,7 +28,7 @@
             <h3>Joe Biden</h3>
             <p><strong>Section ID:</strong> TC2L</p>
             <p><strong>Student ID:</strong> USA001</p>
-            <p><strong>Email:</strong><a href="mailto:joebiden@example.com"></a>joebiden@example.com</p>
+            <p><strong>Email:</strong> <a href="mailto:joebiden@example.com">joebiden@example.com</a></p>
         </div>
     </div>
 </div>
