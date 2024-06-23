@@ -11,14 +11,13 @@
 
 <body>
     <header>
-         <h1 style="color: white; margin: auto; text-decoration: none;">MMU Counseling Services</h1>
-<a href="https://www.mmu.edu.my/" target="_blank">
+       <div class="nav-container">
+           <a class="ref-container" href="https://www.mmu.edu.my/" target="_blank">
+               <h1 style="color:white; font-size: 1.5rem">MMU Counselling Services</h1>
         <img class="mmu-logo" src="./assets/images/Multimedia_University_Logo.jpg" alt="MMU Logo"/>
-    </a>        <div class="nav-container">
+    </a>
             <a href="/Web-Development-Course/index.php">
-                <div>
 
-                </div>
 
             </a>
             <nav>

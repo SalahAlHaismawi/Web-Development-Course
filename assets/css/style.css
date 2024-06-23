@@ -312,6 +312,16 @@ nav ul li a.active {
     margin-bottom: 20px;
 
 }
+.strong-text {
+    font-weight: 700;
+/*    collapse the text based on width*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+
+}
+
 .mmu-logo
 {
     width: 50px;
@@ -319,6 +329,38 @@ nav ul li a.active {
     margin: 0 auto;
     display: block;
     border-radius: 100%;
+}
+
+text-students{
+
+    font-size: 1.5rem;
+    color: #0056b3;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.scale-animation:hover {
+    animation: scale 1s ease-in-out;
+    color: white; /* Optional: Change text color for better contrast */
+}
+.ref-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+/*    text color*/
+    color: #ffffff;
 }
 @media (max-width: 768px) {
     .user-container {

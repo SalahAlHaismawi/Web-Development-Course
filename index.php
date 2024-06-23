@@ -2,17 +2,17 @@
 include ('includes/header.php');
 ?>
 <div class="container">
-    <img class="student-image" src="./assets/images/studentDrawing.jpg"/>
-    <div class="promo-text">
-        <h1>For Students by Students</h1>
-    </div>
+
+
     <div class="container2">
+        <img class="student-image" src="./assets/images/studentDrawing.jpg"/>
         <h1>Welcome to MMU Counseling Services</h1>
-        <strong>Your one-stop solution for booking counseling sessions.</strong>
+        <h2>Made for Students by Students</h2>
+
         <div class="button-container">
-            <a href="./authentication/signup.php"><button>Sign Up</button></a>
+            <a class="scale-animation" href="./authentication/signup.php"><button>Sign Up</button></a>
             <p>or</p>
-            <a href="authentication/signin.php"><button>Sign In</button></a>
+            <a class="scale-animation" href="authentication/signin.php"><button>Sign In</button></a>
         </div>
     </div>
 </div>
@@ -62,6 +62,10 @@ include ('includes/footer.php');
         font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+    }
+    .button-container button:hover {
+        background-color: #1e9113;
+
     }
 
     .button-container button:hover {
