@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 <h2>Sign Up</h2>
 <form action="add_user.php" method="post" onsubmit="return validateForm()">
    <div class="auth-picture-container">
-<img class="student-image" src="Web-Development-Course/assets/images/studentDrawing.jpg"/>
+<img class="student-image" src="../assets/images/studentDrawing.jpg"/>
 
         </div>
     <label for="email">Email</label>
