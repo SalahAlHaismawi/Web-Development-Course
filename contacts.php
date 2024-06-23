@@ -3,14 +3,14 @@
 <div class="container">
     <div class="user-container">
         <div class="user">
-            <img src="uploads/salah.jpeg" alt="User 1 Profile Page">
-            <h3>Name: Salah Fayeq</h3>
+            <img src="/Web-Development-Course/uploads/salah.jpeg" alt="User 1 Profile Page">
+            <h3>Salah Fayeq</h3>
             <p><strong>Section ID:</strong> TC2L</p>
             <p><strong>Student ID:</strong> 1201303035</p>
             <p><strong>Email:</strong> <a href="mailto:1201303035@student.mmu.edu.my">1201303035@student.mmu.edu.my</a></p>
         </div>
         <div class="user">
-            <img src="uploads/jianyi.jpg" alt="Tan Jian Yi">
+            <img src="/Web-Development-Course/uploads/jianyi.jpg" alt="Tan Jian Yi">
             <h3>Tan Jian Yi</h3>
             <p><strong>Section ID:</strong> TC2L</p>
             <p><strong>Student ID:</strong> 1211311173</p>
